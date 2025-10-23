@@ -1,0 +1,119 @@
+from fastapi import FastAPI
+import logging
+from functools import lru_cache
+from cachetools import TTLCache
+from .config import Settings
+from .gemini import GeminiClient
+from google.oauth2 import service_account
+from google.oauth2.service_account import Credentials
+
+from .bias import BiasAnalyzer
+from .parse import WebParser
+
+import logging
+from functools import lru_cache
+
+from fastapi import HTTPException, status
+
+from .model import AnalyzeRequest, AnalyzeResponse
+
+
+#setting up logging
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
+
+formatter = logging.Formatter('%(asctime)s:%(name)s:%(message)s')
+
+file_handler = logging.FileHandler('main.log')
+file_handler.setFormatter(formatter)
+
+stream_handler = logging.StreamHandler()
+stream_handler.setFormatter(formatter)
+
+logger.addHandler(file_handler)
+logger.addHandler(stream_handler)
+
+
+
+@lru_cache
+def get_settings() -> Settings:
+    return Settings()
+
+settings: Settings = get_settings()
+
+credentials: Credentials = service_account.Credentials.from_service_account_file(settings.gcp_service_account_file)
+
+gemini_client: GeminiClient = GeminiClient(
+    settings.gcp_project_id,
+    settings.gcp_location,
+    credentials,
+    settings.gcp_gemini_model
+)
+
+bias_analyzer: BiasAnalyzer = BiasAnalyzer(gemini_client)
+web_parser: WebParser = WebParser(settings.parse_max_content_length, settings.parse_chunk_size)
+
+
+app: FastAPI = FastAPI()
+
+result_cache: TTLCache = TTLCache(maxsize=settings.cache_size, ttl=settings.cache_ttl)
+enhanced_result_cache: TTLCache = TTLCache(maxsize=settings.cache_size, ttl=settings.cache_ttl)
+
+@app.post('/analyze')
+def analyze(analyze_request: AnalyzeRequest) -> AnalyzeResponse:
+    # try to use cached result
+    cached_result = result_cache.get(analyze_request.uri)
+
+    if cached_result:
+        logger.info('Returning cached result for %s', analyze_request.uri)
+        return cached_result
+
+
+    logger.info('Analyzing %s', analyze_request.uri)
+    text = web_parser.parse(analyze_request.uri)
+
+    if not text:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail='Could not parse page')
+
+    try:
+        result = bias_analyzer.analyze(text)
+        response = AnalyzeResponse(uri=analyze_request.uri, result=result)
+        result_cache[analyze_request.uri] = response
+        return response
+    
+    except Exception as e:
+        logger.exception("Failed to analyze %s: %s", analyze_request.uri, str(e))
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail='Could not analyze page')
+
+@app.post('/ParsedText')
+def scrape(analyze_request: AnalyzeRequest) -> str:
+    logger.info('Analyzing %s', analyze_request.uri)
+    text = web_parser.parse(analyze_request.uri)
+    return text
+
+@app.post('/EnhancedText')
+def enhance(analyze_response: AnalyzeResponse) -> str:
+     # try to use cached result
+    enhanced_cached_result = enhanced_result_cache.get(analyze_response.uri)
+
+    if enhanced_cached_result:
+        logger.info('Returning enhanced_cached result for %s', analyze_response.uri)
+        return enhanced_cached_result
+
+
+    logger.info('Enhancing %s', analyze_response.uri)
+    text = web_parser.parse(analyze_response.uri)
+
+    if not text:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail='Could not parse page')
+
+    try:
+        # logger.info(text)
+        # logger.info(analyze_response.result)
+        result = bias_analyzer.enhance(text,analyze_response.result)
+        enhanced_result_cache[analyze_response.uri] = result
+        return result
+    
+    except Exception as e:
+        logger.exception("Failed to analyze %s: %s", analyze_response.uri, str(e))
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail='Could not analyze page')

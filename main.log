@@ -1,0 +1,351 @@
+2025-10-22 16:32:14,914:backend.main:Analyzing https://ourlittlejoys.com/blog/fairy-tale-stories-for-kids/
+2025-10-22 16:32:17,236:backend.main:Failed to analyze https://ourlittlejoys.com/blog/fairy-tale-stories-for-kids/: 403 Vertex AI API has not been used in project btechproject-475814 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/aiplatform.googleapis.com/overview?project=btechproject-475814 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry. [reason: "SERVICE_DISABLED"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "aiplatform.googleapis.com"
+}
+metadata {
+  key: "serviceTitle"
+  value: "Vertex AI API"
+}
+metadata {
+  key: "containerInfo"
+  value: "btechproject-475814"
+}
+metadata {
+  key: "consumer"
+  value: "projects/btechproject-475814"
+}
+metadata {
+  key: "activationUrl"
+  value: "https://console.developers.google.com/apis/api/aiplatform.googleapis.com/overview?project=btechproject-475814"
+}
+, locale: "en-US"
+message: "Vertex AI API has not been used in project btechproject-475814 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/aiplatform.googleapis.com/overview?project=btechproject-475814 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry."
+, links {
+  description: "Google developers console API activation"
+  url: "https://console.developers.google.com/apis/api/aiplatform.googleapis.com/overview?project=btechproject-475814"
+}
+]
+Traceback (most recent call last):
+  File "/Users/barkhachaudhary/Desktop/BTP/AIH/venv/lib/python3.13/site-packages/google/api_core/grpc_helpers.py", line 169, in error_remapped_callable
+    return _StreamingResponseIterator(
+        result, prefetch_first_result=prefetch_first
+    )
+  File "/Users/barkhachaudhary/Desktop/BTP/AIH/venv/lib/python3.13/site-packages/google/api_core/grpc_helpers.py", line 91, in __init__
+    self._stored_first_result = next(self._wrapped)
+                                ~~~~^^^^^^^^^^^^^^^
+  File "/Users/barkhachaudhary/Desktop/BTP/AIH/venv/lib/python3.13/site-packages/grpc/_channel.py", line 538, in __next__
+    return self._next()
+           ~~~~~~~~~~^^
+  File "/Users/barkhachaudhary/Desktop/BTP/AIH/venv/lib/python3.13/site-packages/grpc/_channel.py", line 962, in _next
+    raise self
+grpc._channel._MultiThreadedRendezvous: <_MultiThreadedRendezvous of RPC that terminated with:
+	status = StatusCode.PERMISSION_DENIED
+	details = "Vertex AI API has not been used in project btechproject-475814 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/aiplatform.googleapis.com/overview?project=btechproject-475814 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry."
+	debug_error_string = "UNKNOWN:Error received from peer ipv6:%5B2404:6800:4009:82f::200a%5D:443 {grpc_status:7, grpc_message:"Vertex AI API has not been used in project btechproject-475814 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/aiplatform.googleapis.com/overview?project=btechproject-475814 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry."}"
+>
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/barkhachaudhary/Desktop/BTP/AIH/backend/main.py", line 78, in analyze
+    result = bias_analyzer.analyze(text)
+  File "/Users/barkhachaudhary/Desktop/BTP/AIH/backend/bias.py", line 52, in analyze
+    chat_response: str = self.gemini_client.get_chat_response(chat, prompt)
+                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/Users/barkhachaudhary/Desktop/BTP/AIH/backend/gemini.py", line 50, in get_chat_response
+    for chunk in responses:
+                 ^^^^^^^^^
+  File "/Users/barkhachaudhary/Desktop/BTP/AIH/venv/lib/python3.13/site-packages/vertexai/generative_models/_generative_models.py", line 1525, in _send_message_streaming
+    for chunk in stream:
+                 ^^^^^^
+  File "/Users/barkhachaudhary/Desktop/BTP/AIH/venv/lib/python3.13/site-packages/vertexai/generative_models/_generative_models.py", line 861, in _generate_content_streaming
+    response_stream = self._prediction_client.stream_generate_content(
+        request=request
+    )
+  File "/Users/barkhachaudhary/Desktop/BTP/AIH/venv/lib/python3.13/site-packages/google/cloud/aiplatform_v1/services/prediction_service/client.py", line 2289, in stream_generate_content
+    response = rpc(
+        request,
+    ...<2 lines>...
+        metadata=metadata,
+    )
+  File "/Users/barkhachaudhary/Desktop/BTP/AIH/venv/lib/python3.13/site-packages/google/api_core/gapic_v1/method.py", line 131, in __call__
+    return wrapped_func(*args, **kwargs)
+  File "/Users/barkhachaudhary/Desktop/BTP/AIH/venv/lib/python3.13/site-packages/google/api_core/grpc_helpers.py", line 173, in error_remapped_callable
+    raise exceptions.from_grpc_error(exc) from exc
+google.api_core.exceptions.PermissionDenied: 403 Vertex AI API has not been used in project btechproject-475814 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/aiplatform.googleapis.com/overview?project=btechproject-475814 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry. [reason: "SERVICE_DISABLED"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "aiplatform.googleapis.com"
+}
+metadata {
+  key: "serviceTitle"
+  value: "Vertex AI API"
+}
+metadata {
+  key: "containerInfo"
+  value: "btechproject-475814"
+}
+metadata {
+  key: "consumer"
+  value: "projects/btechproject-475814"
+}
+metadata {
+  key: "activationUrl"
+  value: "https://console.developers.google.com/apis/api/aiplatform.googleapis.com/overview?project=btechproject-475814"
+}
+, locale: "en-US"
+message: "Vertex AI API has not been used in project btechproject-475814 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/aiplatform.googleapis.com/overview?project=btechproject-475814 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry."
+, links {
+  description: "Google developers console API activation"
+  url: "https://console.developers.google.com/apis/api/aiplatform.googleapis.com/overview?project=btechproject-475814"
+}
+]
+2025-10-22 16:38:13,098:backend.main:Analyzing https://ourlittlejoys.com/blog/fairy-tale-stories-for-kids/
+2025-10-22 16:38:15,327:backend.main:Failed to analyze https://ourlittlejoys.com/blog/fairy-tale-stories-for-kids/: 403 This API method requires billing to be enabled. Please enable billing on project #btechproject-475814 by visiting https://console.developers.google.com/billing/enable?project=btechproject-475814 then retry. If you enabled billing for this project recently, wait a few minutes for the action to propagate to our systems and retry. [reason: "BILLING_DISABLED"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "aiplatform.googleapis.com"
+}
+metadata {
+  key: "containerInfo"
+  value: "btechproject-475814"
+}
+metadata {
+  key: "consumer"
+  value: "projects/btechproject-475814"
+}
+, locale: "en-US"
+message: "This API method requires billing to be enabled. Please enable billing on project #btechproject-475814 by visiting https://console.developers.google.com/billing/enable?project=btechproject-475814 then retry. If you enabled billing for this project recently, wait a few minutes for the action to propagate to our systems and retry."
+, links {
+  description: "Google developers console billing"
+  url: "https://console.developers.google.com/billing/enable?project=btechproject-475814"
+}
+]
+Traceback (most recent call last):
+  File "/Users/barkhachaudhary/Desktop/BTP/AIH/venv/lib/python3.13/site-packages/google/api_core/grpc_helpers.py", line 169, in error_remapped_callable
+    return _StreamingResponseIterator(
+        result, prefetch_first_result=prefetch_first
+    )
+  File "/Users/barkhachaudhary/Desktop/BTP/AIH/venv/lib/python3.13/site-packages/google/api_core/grpc_helpers.py", line 91, in __init__
+    self._stored_first_result = next(self._wrapped)
+                                ~~~~^^^^^^^^^^^^^^^
+  File "/Users/barkhachaudhary/Desktop/BTP/AIH/venv/lib/python3.13/site-packages/grpc/_channel.py", line 538, in __next__
+    return self._next()
+           ~~~~~~~~~~^^
+  File "/Users/barkhachaudhary/Desktop/BTP/AIH/venv/lib/python3.13/site-packages/grpc/_channel.py", line 962, in _next
+    raise self
+grpc._channel._MultiThreadedRendezvous: <_MultiThreadedRendezvous of RPC that terminated with:
+	status = StatusCode.PERMISSION_DENIED
+	details = "This API method requires billing to be enabled. Please enable billing on project #btechproject-475814 by visiting https://console.developers.google.com/billing/enable?project=btechproject-475814 then retry. If you enabled billing for this project recently, wait a few minutes for the action to propagate to our systems and retry."
+	debug_error_string = "UNKNOWN:Error received from peer ipv6:%5B2404:6800:4009:829::200a%5D:443 {grpc_status:7, grpc_message:"This API method requires billing to be enabled. Please enable billing on project #btechproject-475814 by visiting https://console.developers.google.com/billing/enable?project=btechproject-475814 then retry. If you enabled billing for this project recently, wait a few minutes for the action to propagate to our systems and retry."}"
+>
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/barkhachaudhary/Desktop/BTP/AIH/backend/main.py", line 78, in analyze
+    result = bias_analyzer.analyze(text)
+  File "/Users/barkhachaudhary/Desktop/BTP/AIH/backend/bias.py", line 52, in analyze
+    chat_response: str = self.gemini_client.get_chat_response(chat, prompt)
+                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/Users/barkhachaudhary/Desktop/BTP/AIH/backend/gemini.py", line 50, in get_chat_response
+    for chunk in responses:
+                 ^^^^^^^^^
+  File "/Users/barkhachaudhary/Desktop/BTP/AIH/venv/lib/python3.13/site-packages/vertexai/generative_models/_generative_models.py", line 1525, in _send_message_streaming
+    for chunk in stream:
+                 ^^^^^^
+  File "/Users/barkhachaudhary/Desktop/BTP/AIH/venv/lib/python3.13/site-packages/vertexai/generative_models/_generative_models.py", line 861, in _generate_content_streaming
+    response_stream = self._prediction_client.stream_generate_content(
+        request=request
+    )
+  File "/Users/barkhachaudhary/Desktop/BTP/AIH/venv/lib/python3.13/site-packages/google/cloud/aiplatform_v1/services/prediction_service/client.py", line 2289, in stream_generate_content
+    response = rpc(
+        request,
+    ...<2 lines>...
+        metadata=metadata,
+    )
+  File "/Users/barkhachaudhary/Desktop/BTP/AIH/venv/lib/python3.13/site-packages/google/api_core/gapic_v1/method.py", line 131, in __call__
+    return wrapped_func(*args, **kwargs)
+  File "/Users/barkhachaudhary/Desktop/BTP/AIH/venv/lib/python3.13/site-packages/google/api_core/grpc_helpers.py", line 173, in error_remapped_callable
+    raise exceptions.from_grpc_error(exc) from exc
+google.api_core.exceptions.PermissionDenied: 403 This API method requires billing to be enabled. Please enable billing on project #btechproject-475814 by visiting https://console.developers.google.com/billing/enable?project=btechproject-475814 then retry. If you enabled billing for this project recently, wait a few minutes for the action to propagate to our systems and retry. [reason: "BILLING_DISABLED"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "aiplatform.googleapis.com"
+}
+metadata {
+  key: "containerInfo"
+  value: "btechproject-475814"
+}
+metadata {
+  key: "consumer"
+  value: "projects/btechproject-475814"
+}
+, locale: "en-US"
+message: "This API method requires billing to be enabled. Please enable billing on project #btechproject-475814 by visiting https://console.developers.google.com/billing/enable?project=btechproject-475814 then retry. If you enabled billing for this project recently, wait a few minutes for the action to propagate to our systems and retry."
+, links {
+  description: "Google developers console billing"
+  url: "https://console.developers.google.com/billing/enable?project=btechproject-475814"
+}
+]
+2025-10-22 20:07:39,589:backend.main:Analyzing https://ourlittlejoys.com/blog/fairy-tale-stories-for-kids/
+2025-10-22 20:07:41,800:backend.main:Failed to analyze https://ourlittlejoys.com/blog/fairy-tale-stories-for-kids/: 403 This API method requires billing to be enabled. Please enable billing on project #glossy-surge-475914-g6 by visiting https://console.developers.google.com/billing/enable?project=glossy-surge-475914-g6 then retry. If you enabled billing for this project recently, wait a few minutes for the action to propagate to our systems and retry. [reason: "BILLING_DISABLED"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "aiplatform.googleapis.com"
+}
+metadata {
+  key: "containerInfo"
+  value: "glossy-surge-475914-g6"
+}
+metadata {
+  key: "consumer"
+  value: "projects/glossy-surge-475914-g6"
+}
+, locale: "en-US"
+message: "This API method requires billing to be enabled. Please enable billing on project #glossy-surge-475914-g6 by visiting https://console.developers.google.com/billing/enable?project=glossy-surge-475914-g6 then retry. If you enabled billing for this project recently, wait a few minutes for the action to propagate to our systems and retry."
+, links {
+  description: "Google developers console billing"
+  url: "https://console.developers.google.com/billing/enable?project=glossy-surge-475914-g6"
+}
+]
+Traceback (most recent call last):
+  File "/Users/barkhachaudhary/Desktop/BTP/AIH/venv/lib/python3.13/site-packages/google/api_core/grpc_helpers.py", line 169, in error_remapped_callable
+    return _StreamingResponseIterator(
+        result, prefetch_first_result=prefetch_first
+    )
+  File "/Users/barkhachaudhary/Desktop/BTP/AIH/venv/lib/python3.13/site-packages/google/api_core/grpc_helpers.py", line 91, in __init__
+    self._stored_first_result = next(self._wrapped)
+                                ~~~~^^^^^^^^^^^^^^^
+  File "/Users/barkhachaudhary/Desktop/BTP/AIH/venv/lib/python3.13/site-packages/grpc/_channel.py", line 538, in __next__
+    return self._next()
+           ~~~~~~~~~~^^
+  File "/Users/barkhachaudhary/Desktop/BTP/AIH/venv/lib/python3.13/site-packages/grpc/_channel.py", line 962, in _next
+    raise self
+grpc._channel._MultiThreadedRendezvous: <_MultiThreadedRendezvous of RPC that terminated with:
+	status = StatusCode.PERMISSION_DENIED
+	details = "This API method requires billing to be enabled. Please enable billing on project #glossy-surge-475914-g6 by visiting https://console.developers.google.com/billing/enable?project=glossy-surge-475914-g6 then retry. If you enabled billing for this project recently, wait a few minutes for the action to propagate to our systems and retry."
+	debug_error_string = "UNKNOWN:Error received from peer ipv6:%5B2404:6800:4009:822::200a%5D:443 {grpc_status:7, grpc_message:"This API method requires billing to be enabled. Please enable billing on project #glossy-surge-475914-g6 by visiting https://console.developers.google.com/billing/enable?project=glossy-surge-475914-g6 then retry. If you enabled billing for this project recently, wait a few minutes for the action to propagate to our systems and retry."}"
+>
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/barkhachaudhary/Desktop/BTP/AIH/backend/main.py", line 78, in analyze
+    result = bias_analyzer.analyze(text)
+  File "/Users/barkhachaudhary/Desktop/BTP/AIH/backend/bias.py", line 52, in analyze
+    chat_response: str = self.gemini_client.get_chat_response(chat, prompt)
+                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/Users/barkhachaudhary/Desktop/BTP/AIH/backend/gemini.py", line 50, in get_chat_response
+    for chunk in responses:
+                 ^^^^^^^^^
+  File "/Users/barkhachaudhary/Desktop/BTP/AIH/venv/lib/python3.13/site-packages/vertexai/generative_models/_generative_models.py", line 1525, in _send_message_streaming
+    for chunk in stream:
+                 ^^^^^^
+  File "/Users/barkhachaudhary/Desktop/BTP/AIH/venv/lib/python3.13/site-packages/vertexai/generative_models/_generative_models.py", line 861, in _generate_content_streaming
+    response_stream = self._prediction_client.stream_generate_content(
+        request=request
+    )
+  File "/Users/barkhachaudhary/Desktop/BTP/AIH/venv/lib/python3.13/site-packages/google/cloud/aiplatform_v1/services/prediction_service/client.py", line 2289, in stream_generate_content
+    response = rpc(
+        request,
+    ...<2 lines>...
+        metadata=metadata,
+    )
+  File "/Users/barkhachaudhary/Desktop/BTP/AIH/venv/lib/python3.13/site-packages/google/api_core/gapic_v1/method.py", line 131, in __call__
+    return wrapped_func(*args, **kwargs)
+  File "/Users/barkhachaudhary/Desktop/BTP/AIH/venv/lib/python3.13/site-packages/google/api_core/grpc_helpers.py", line 173, in error_remapped_callable
+    raise exceptions.from_grpc_error(exc) from exc
+google.api_core.exceptions.PermissionDenied: 403 This API method requires billing to be enabled. Please enable billing on project #glossy-surge-475914-g6 by visiting https://console.developers.google.com/billing/enable?project=glossy-surge-475914-g6 then retry. If you enabled billing for this project recently, wait a few minutes for the action to propagate to our systems and retry. [reason: "BILLING_DISABLED"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "aiplatform.googleapis.com"
+}
+metadata {
+  key: "containerInfo"
+  value: "glossy-surge-475914-g6"
+}
+metadata {
+  key: "consumer"
+  value: "projects/glossy-surge-475914-g6"
+}
+, locale: "en-US"
+message: "This API method requires billing to be enabled. Please enable billing on project #glossy-surge-475914-g6 by visiting https://console.developers.google.com/billing/enable?project=glossy-surge-475914-g6 then retry. If you enabled billing for this project recently, wait a few minutes for the action to propagate to our systems and retry."
+, links {
+  description: "Google developers console billing"
+  url: "https://console.developers.google.com/billing/enable?project=glossy-surge-475914-g6"
+}
+]
+2025-10-22 20:10:50,588:backend.main:Analyzing https://ourlittlejoys.com/blog/fairy-tale-stories-for-kids/
+2025-10-22 20:30:58,670:backend.main:Returning cached result for https://ourlittlejoys.com/blog/fairy-tale-stories-for-kids/
+2025-10-22 20:31:47,983:backend.main:Analyzing https://codeforces.com/problemset/problem/346/A
+2025-10-22 20:33:18,320:backend.main:Analyzing https://www.storynory.com/the-gingerbread-man/
+2025-10-22 20:55:31,993:backend.main:Analyzing https://www.storynory.com/the-gingerbread-man/
+2025-10-22 21:44:01,460:backend.main:Analyzing https://www.storynory.com/the-gingerbread-man/
+2025-10-22 21:44:02,229:backend.main:Failed to analyze https://www.storynory.com/the-gingerbread-man/: BiasAnalyzer._render_template() got multiple values for argument 'text'
+Traceback (most recent call last):
+  File "/Users/barkhachaudhary/Desktop/BTP/AIH/backend/main.py", line 79, in analyze
+    result = bias_analyzer.analyze(text)
+  File "/Users/barkhachaudhary/Desktop/BTP/AIH/backend/bias.py", line 50, in analyze
+    prompt = self._render_template("analyze.jinja", text=text)
+TypeError: BiasAnalyzer._render_template() got multiple values for argument 'text'
+2025-10-22 21:51:28,782:backend.main:Analyzing https://www.storynory.com/the-gingerbread-man/
+2025-10-22 21:51:29,341:backend.main:Failed to analyze https://www.storynory.com/the-gingerbread-man/: BiasAnalyzer._render_template() takes 2 positional arguments but 3 were given
+Traceback (most recent call last):
+  File "/Users/barkhachaudhary/Desktop/BTP/AIH/backend/main.py", line 79, in analyze
+    result = bias_analyzer.analyze(text)
+  File "/Users/barkhachaudhary/Desktop/BTP/AIH/backend/bias.py", line 50, in analyze
+    prompt = self._render_template("analyze.jinja", text)
+TypeError: BiasAnalyzer._render_template() takes 2 positional arguments but 3 were given
+2025-10-22 21:57:01,382:backend.main:Analyzing https://www.storynory.com/the-gingerbread-man/
+2025-10-22 21:57:01,911:backend.main:Failed to analyze https://www.storynory.com/the-gingerbread-man/: BiasAnalyzer._render_custom_template() takes 2 positional arguments but 3 were given
+Traceback (most recent call last):
+  File "/Users/barkhachaudhary/Desktop/BTP/AIH/backend/main.py", line 79, in analyze
+    result = bias_analyzer.analyze(text)
+  File "/Users/barkhachaudhary/Desktop/BTP/AIH/backend/bias.py", line 61, in analyze
+    prompt = self._render_custom_template("analyze.jinja", text)
+TypeError: BiasAnalyzer._render_custom_template() takes 2 positional arguments but 3 were given
+2025-10-22 21:59:21,934:backend.main:Analyzing https://www.storynory.com/the-gingerbread-man/
+2025-10-22 21:59:22,645:backend.main:Failed to analyze https://www.storynory.com/the-gingerbread-man/: 'analyze.jinja' not found in search path: 'templates'
+Traceback (most recent call last):
+  File "/Users/barkhachaudhary/Desktop/BTP/AIH/backend/main.py", line 79, in analyze
+    result = bias_analyzer.analyze(text)
+  File "/Users/barkhachaudhary/Desktop/BTP/AIH/backend/bias.py", line 61, in analyze
+    prompt = self._render_custom_template("analyze.jinja", text=text)
+  File "/Users/barkhachaudhary/Desktop/BTP/AIH/backend/bias.py", line 57, in _render_custom_template
+    template = env.get_template(template_name)
+  File "/Users/barkhachaudhary/Desktop/BTP/AIH/venv/lib/python3.13/site-packages/jinja2/environment.py", line 1016, in get_template
+    return self._load_template(name, globals)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/barkhachaudhary/Desktop/BTP/AIH/venv/lib/python3.13/site-packages/jinja2/environment.py", line 975, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/Users/barkhachaudhary/Desktop/BTP/AIH/venv/lib/python3.13/site-packages/jinja2/loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+                                 ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/Users/barkhachaudhary/Desktop/BTP/AIH/venv/lib/python3.13/site-packages/jinja2/loaders.py", line 209, in get_source
+    raise TemplateNotFound(
+    ...<2 lines>...
+    )
+jinja2.exceptions.TemplateNotFound: 'analyze.jinja' not found in search path: 'templates'
+2025-10-22 22:08:41,767:backend.main:Analyzing https://www.storynory.com/the-gingerbread-man/
+2025-10-22 22:09:36,209:backend.main:Analyzing https://www.storynory.com/the-gingerbread-man/
+2025-10-22 22:10:25,696:backend.main:Enhancing https://www.storynory.com/the-gingerbread-man/
+2025-10-22 22:27:26,162:backend.main:Enhancing https://www.storynory.com/the-gingerbread-man/
+2025-10-22 22:27:26,888:backend.main:Original Stories Fairytales Classic Audio Books Educational Stories Myths and World Stories Junior Stories Poems and Music X Home Storynory Menu Original fairytales Classic Authors Myths & World Educational Poems & Music The Gingerbread Man ⟲ ⟳ seek 00.00.00 00.00.00 loading Download This is the fast paced tale of the Gingerbread Man who leapt out of the oven and ran away. In the 1890 version by Joseph Jacobs, the hero was Johnny-Cake, but we have changed him to the more familiar Gingerbread Man. Duration 8 Minutes. Read by Natasha. Once upon a time there was an old man, an old woman, and a little boy. One morning the old woman made some gingerbread in the shape of a man. She added icing for his hair and clothes, and little blobs of dough for his nose and eyes. When she put him in the oven to bake, she said to the little boy, "You watch the gingerbread man while your grandfather and I go out to work in the garden." So the old man and the old woman went out and began to dig potatoes, and left the little boy to tend the oven. But he started to day dream, and didn’t watch it all of the time. All of a sudden he heard a noise, and he looked up and the oven door popped open, and out of the oven jumped a gingerbread man, and went rolling along end over end towards the open door of the house. The little boy ran to shut the door, but the gingerbread man was too quick for him and rolled through the door, down the steps, and out into the road long before the little boy could catch him. The little boy ran after him as fast as he could manage, crying out to his grandfather and grandmother, who heard the noise, and threw down their spades in the garden to give chase too. The gingerbread man outran all three a long way, and was soon out of sight, while they had to sit down, all out of breath, on a bank to rest. On went the gingerbread man, and by-and-by he came to two men digging a well who looked up from their work and called out, "Where ye going, gingerbread man?" He said, "I’ve outrun an old man, an old woman, and a little boy - and I can outrun you too-o-o!" "You can, can you? We’ll see about that?" Said they, and so they threw down their picks and ran after him, but couldn’t catch up with him, and soon they had to sit down by the roadside to rest. On ran the gingerbread man, and by-and-by he came to two men digging a ditch. "Where ye going, gingerbread man?" said they. He said, "I’ve outrun an old man, an old woman, a little boy, and two well diggers, and I can outrun you too-o-o!" "You can, can you? We’ll see about that!" said they, and they too threw down their spades, and ran after him. The gingerbread man soon outstripped them also, and seeing they could never catch him, gave up the chase and sat down to rest. On went the gingerbread man, and by-and-by he came to a bear. The bear said, "Where are ye going, gingerbread man?" He said, "I’ve outrun an old man, an old woman, a little boy, two well diggers, and two ditch diggers, and I can outrun you too-o-o!" "You can, can you?" Growled the bear. "We’ll see about that!" He trotted as fast as his legs could carry him after the gingerbread man, who never stopped to look behind him. Before long the bear was left so far behind that he saw he might as well given up the hunt at the start, so he stretched himself out by the roadside to rest. On went the gingerbread man and by-and-by he came to a wolf. The wolf said, "Where ye going, gingerbread man?" He said, "I’ve outrun an old man, an old woman, a little boy, two well diggers, two ditch diggers, and a bear, and I can outrun you too-o-o!" "You can, can you?" Snarled the wolf. "We’ll see about that!" So he set into a gallop after the gingerbread man, who went on and on so fast, that the wolf too saw there was no hope of overtaking him, and he too lay down to rest. On went the gingerbread man, and by-and-by he came to a fox that lay quietly in a corner of the fence. The fox called out in a sharp voice, but without getting up, "Where ye going, gingerbread man?" He said: "I’ve outrun an old man, an old woman, a little boy, two well diggers, two ditch diggers, a bear, and a wolf, and I can outrun you too-o-o!" The fox said, "I can’t quite hear you, gingerbread man. Won’t you come a little closer?" Turning his head a little to one side. The gingerbread man stopped his race for the first time, and went a little closer, and called out in a very loud voice, "I’ve outrun an old man, an old woman, a little boy, two well diggers, two ditch diggers, a bear and a wolf, and I can outrun you too-o-o." "I still can’t quite hear you. Won’t you come a little closer?" Said the fox in a feeble voice, as he stretched out his neck towards the gingerbread man, and put one paw behind his ear. The gingerbread man came up close, and leaning towards the fox, screamed out "I’VE OUTRUN AN OLD MAN, AN OLD WOMAN, A LITTLE BOY, TWO WELL DIGGERS, TWO DITCH DIGGERS, A BEAR AND A WOLF, AND I CAN OUTRUN YOU TOO-O-O!" "You can, can you?" Yelped the fox, and he snapped up the gingerbread man in his sharp teeth in the twinkling of an eye. And that was the storynory of the gingerbread man. I think that the ending is rather sad, but Bertie doesn’t agree. He says that gingerbread is extremely tasty, and he doesn't blame that fox at all for wanting to eat it. I suppose he has a point, but then again, it’s not just any old piece of gingerbread that can run. You can find out about more Prince Bertie the frog’s stories at Storynory.com, where all Prince Bertie the Frog’s stories are free, and if you like you can buy a personalised story for a very special person in your life. So tell all your friends to visit Storynory.com. For now, from me, Natasha, Bye Bye! Small Stories Snow White – Shorter Version The Clever Parrot and the Laid-Back Cat Damsel the Elephant Birdy and the Magical Stardust The Tears of a Tigress More like this … Storynory Ltd, 26 Star Street, London UK. +44 (0) 7941 190 740. Main point of contact - [email protected] . Audio and texts are Copyright Storynory Ltd unless otherwise stated. Images are copyrighted to their owners. Many images on this site are licenced from Shutterstock. Our Terms and Conditions make it easy for schools to use our materials for free, please see our Copywrite Page for details You can review our privacy policy here Privacy Page x
+2025-10-22 22:27:26,889:backend.main:summary='The webpage presents a classic fairytale, "The Gingerbread Man," which, while entertaining, reinforces traditional gender roles. The story features an old woman in a domestic role and primarily male characters in various occupations, with limited representation of female characters in active or diverse roles. To improve gender inclusivity, the webpage could include more stories with female protagonists in diverse roles and use inclusive language in descriptions and introductions.' overall_score=49 stereotyping_feedback='The webpage reinforces traditional gender roles by depicting the old woman as the one who makes the gingerbread man, placing her in a domestic role. The men are primarily represented in outdoor labor roles. This perpetuates the stereotype of women being primarily responsible for domestic tasks and men being the primary laborers.' stereotyping_score=40 stereotyping_example='"One morning the old woman made some gingerbread in the shape of a man... You watch the gingerbread man while your grandfather and I go out to work in the garden."' representation_feedback='The representation of female characters is limited. The story primarily focuses on the gingerbread man and the various male characters he encounters. The old woman is present, but her role is confined to domestic duties. There is a lack of diverse female characters and perspectives.' representation_score=35 representation_example="The story features an 'old woman' who bakes, while the other characters chasing the gingerbread man are predominantly male (old man, little boy, well diggers, ditch diggers, bear, wolf, fox)." language_feedback="The language used is generally neutral, but the story uses gendered terms like 'old man' and 'old woman.' While these are descriptive, the lack of female representation in other roles makes the language feel less inclusive. The narrator is female (Natasha), which is a positive aspect." language_score=60 language_example="The consistent use of 'old man' and 'old woman' to describe the characters, while not inherently biased, reinforces traditional gender roles in the context of the story." framing_feedback="The framing of the story does not actively promote gender equality. The focus is on the gingerbread man's adventure and his interactions with various characters, with no specific attention given to challenging gender norms or empowering female characters. The story could be re-framed to include a female character in a more active and empowered role." framing_score=45 framing_example="The story focuses on the gingerbread man's escape and interactions with male characters, without any framing that challenges traditional gender roles or empowers female characters." positive_aspects='The narrator is female (Natasha), which provides a female voice to the storytelling. The website includes a variety of stories, which could potentially offer more diverse representation in other content.' improvement_suggestions='1. Include more stories with female protagonists in diverse and empowered roles. 2. Re-frame existing stories to challenge traditional gender roles and promote gender equality. 3. Use inclusive language in descriptions and introductions to ensure that all genders are represented and valued.' male_to_female_mention_ratio=6.0 gender_neutral_language_percentage=85.0
+2025-10-22 22:35:35,519:backend.main:Returning enhanced_cached result for https://www.storynory.com/the-gingerbread-man/
+2025-10-22 22:36:19,868:backend.main:Returning enhanced_cached result for https://www.storynory.com/the-gingerbread-man/
+2025-10-22 22:37:42,148:backend.main:Enhancing https://www.storynory.com/the-gingerbread-man/
+2025-10-22 22:37:42,923:backend.main:Original Stories Fairytales Classic Audio Books Educational Stories Myths and World Stories Junior Stories Poems and Music X Home Storynory Menu Original fairytales Classic Authors Myths & World Educational Poems & Music The Gingerbread Man ⟲ ⟳ seek 00.00.00 00.00.00 loading Download This is the fast paced tale of the Gingerbread Man who leapt out of the oven and ran away. In the 1890 version by Joseph Jacobs, the hero was Johnny-Cake, but we have changed him to the more familiar Gingerbread Man. Duration 8 Minutes. Read by Natasha. Once upon a time there was an old man, an old woman, and a little boy. One morning the old woman made some gingerbread in the shape of a man. She added icing for his hair and clothes, and little blobs of dough for his nose and eyes. When she put him in the oven to bake, she said to the little boy, "You watch the gingerbread man while your grandfather and I go out to work in the garden." So the old man and the old woman went out and began to dig potatoes, and left the little boy to tend the oven. But he started to day dream, and didn’t watch it all of the time. All of a sudden he heard a noise, and he looked up and the oven door popped open, and out of the oven jumped a gingerbread man, and went rolling along end over end towards the open door of the house. The little boy ran to shut the door, but the gingerbread man was too quick for him and rolled through the door, down the steps, and out into the road long before the little boy could catch him. The little boy ran after him as fast as he could manage, crying out to his grandfather and grandmother, who heard the noise, and threw down their spades in the garden to give chase too. The gingerbread man outran all three a long way, and was soon out of sight, while they had to sit down, all out of breath, on a bank to rest. On went the gingerbread man, and by-and-by he came to two men digging a well who looked up from their work and called out, "Where ye going, gingerbread man?" He said, "I’ve outrun an old man, an old woman, and a little boy - and I can outrun you too-o-o!" "You can, can you? We’ll see about that?" Said they, and so they threw down their picks and ran after him, but couldn’t catch up with him, and soon they had to sit down by the roadside to rest. On ran the gingerbread man, and by-and-by he came to two men digging a ditch. "Where ye going, gingerbread man?" said they. He said, "I’ve outrun an old man, an old woman, a little boy, and two well diggers, and I can outrun you too-o-o!" "You can, can you? We’ll see about that!" said they, and they too threw down their spades, and ran after him. The gingerbread man soon outstripped them also, and seeing they could never catch him, gave up the chase and sat down to rest. On went the gingerbread man, and by-and-by he came to a bear. The bear said, "Where are ye going, gingerbread man?" He said, "I’ve outrun an old man, an old woman, a little boy, two well diggers, and two ditch diggers, and I can outrun you too-o-o!" "You can, can you?" Growled the bear. "We’ll see about that!" He trotted as fast as his legs could carry him after the gingerbread man, who never stopped to look behind him. Before long the bear was left so far behind that he saw he might as well given up the hunt at the start, so he stretched himself out by the roadside to rest. On went the gingerbread man and by-and-by he came to a wolf. The wolf said, "Where ye going, gingerbread man?" He said, "I’ve outrun an old man, an old woman, a little boy, two well diggers, two ditch diggers, and a bear, and I can outrun you too-o-o!" "You can, can you?" Snarled the wolf. "We’ll see about that!" So he set into a gallop after the gingerbread man, who went on and on so fast, that the wolf too saw there was no hope of overtaking him, and he too lay down to rest. On went the gingerbread man, and by-and-by he came to a fox that lay quietly in a corner of the fence. The fox called out in a sharp voice, but without getting up, "Where ye going, gingerbread man?" He said: "I’ve outrun an old man, an old woman, a little boy, two well diggers, two ditch diggers, a bear, and a wolf, and I can outrun you too-o-o!" The fox said, "I can’t quite hear you, gingerbread man. Won’t you come a little closer?" Turning his head a little to one side. The gingerbread man stopped his race for the first time, and went a little closer, and called out in a very loud voice, "I’ve outrun an old man, an old woman, a little boy, two well diggers, two ditch diggers, a bear and a wolf, and I can outrun you too-o-o." "I still can’t quite hear you. Won’t you come a little closer?" Said the fox in a feeble voice, as he stretched out his neck towards the gingerbread man, and put one paw behind his ear. The gingerbread man came up close, and leaning towards the fox, screamed out "I’VE OUTRUN AN OLD MAN, AN OLD WOMAN, A LITTLE BOY, TWO WELL DIGGERS, TWO DITCH DIGGERS, A BEAR AND A WOLF, AND I CAN OUTRUN YOU TOO-O-O!" "You can, can you?" Yelped the fox, and he snapped up the gingerbread man in his sharp teeth in the twinkling of an eye. And that was the storynory of the gingerbread man. I think that the ending is rather sad, but Bertie doesn’t agree. He says that gingerbread is extremely tasty, and he doesn't blame that fox at all for wanting to eat it. I suppose he has a point, but then again, it’s not just any old piece of gingerbread that can run. You can find out about more Prince Bertie the frog’s stories at Storynory.com, where all Prince Bertie the Frog’s stories are free, and if you like you can buy a personalised story for a very special person in your life. So tell all your friends to visit Storynory.com. For now, from me, Natasha, Bye Bye! Small Stories Snow White – Shorter Version The Clever Parrot and the Laid-Back Cat Damsel the Elephant Birdy and the Magical Stardust The Tears of a Tigress More like this … Storynory Ltd, 26 Star Street, London UK. +44 (0) 7941 190 740. Main point of contact - [email protected] . Audio and texts are Copyright Storynory Ltd unless otherwise stated. Images are copyrighted to their owners. Many images on this site are licenced from Shutterstock. Our Terms and Conditions make it easy for schools to use our materials for free, please see our Copywrite Page for details You can review our privacy policy here Privacy Page x
+2025-10-22 22:37:42,924:backend.main:summary='The webpage presents a classic fairytale, "The Gingerbread Man," which, while entertaining, reinforces traditional gender roles. The story features an old woman in a domestic role and primarily male characters in various occupations, with limited representation of female characters in active or diverse roles. To improve gender inclusivity, the webpage could include more stories with female protagonists in diverse roles and use inclusive language in descriptions and introductions.' overall_score=49 stereotyping_feedback='The webpage reinforces traditional gender roles by depicting the old woman as the one who makes the gingerbread man, placing her in a domestic role. The men are primarily represented in outdoor labor roles. This perpetuates the stereotype of women being primarily responsible for domestic tasks and men being the primary laborers.' stereotyping_score=40 stereotyping_example='"One morning the old woman made some gingerbread in the shape of a man... You watch the gingerbread man while your grandfather and I go out to work in the garden."' representation_feedback='The representation of female characters is limited. The story primarily focuses on the gingerbread man and the various male characters he encounters. The old woman is present, but her role is confined to domestic duties. There is a lack of diverse female characters and perspectives.' representation_score=35 representation_example="The story features an 'old woman' who bakes, while the other characters chasing the gingerbread man are predominantly male (old man, little boy, well diggers, ditch diggers, bear, wolf, fox)." language_feedback="The language used is generally neutral, but the story uses gendered terms like 'old man' and 'old woman.' While these are descriptive, the lack of female representation in other roles makes the language feel less inclusive. The narrator is female (Natasha), which is a positive aspect." language_score=60 language_example="The consistent use of 'old man' and 'old woman' to describe the characters, while not inherently biased, reinforces traditional gender roles in the context of the story." framing_feedback="The framing of the story does not actively promote gender equality. The focus is on the gingerbread man's adventure and his interactions with various characters, with no specific attention given to challenging gender norms or empowering female characters. The story could be re-framed to include a female character in a more active and empowered role." framing_score=45 framing_example="The story focuses on the gingerbread man's escape and interactions with male characters, without any framing that challenges traditional gender roles or empowers female characters." positive_aspects='The narrator is female (Natasha), which provides a female voice to the storytelling. The website includes a variety of stories, which could potentially offer more diverse representation in other content.' improvement_suggestions='1. Include more stories with female protagonists in diverse and empowered roles. 2. Re-frame existing stories to challenge traditional gender roles and promote gender equality. 3. Use inclusive language in descriptions and introductions to ensure that all genders are represented and valued.' male_to_female_mention_ratio=6.0 gender_neutral_language_percentage=85.0
+2025-10-22 22:43:34,074:backend.main:Analyzing https://monkeypen.com/blogs/news/hide-and-seek-free-childrens-book-from-monkey-pen
+2025-10-22 22:45:56,249:backend.main:Analyzing https://monkeypen.com/blogs/news/hide-and-seek-free-childrens-book-from-monkey-pen
+2025-10-22 22:46:50,596:backend.main:Enhancing https://monkeypen.com/blogs/news/hide-and-seek-free-childrens-book-from-monkey-pen
