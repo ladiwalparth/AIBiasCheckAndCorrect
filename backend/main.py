@@ -15,7 +15,7 @@ from functools import lru_cache
 
 from fastapi import HTTPException, status
 
-from .model import AnalyzeRequest, AnalyzeResponse
+from .model import AnalyzeRequest, AnalyzeResponse, AnalyzeResult
 
 
 #setting up logging
@@ -50,7 +50,16 @@ gemini_client: GeminiClient = GeminiClient(
     settings.gcp_gemini_model
 )
 
+gemini_client2: GeminiClient = GeminiClient(
+    settings.gcp_project_id,
+    settings.gcp_location,
+    credentials,
+    settings.gcp_gemini_model2
+)
+
 bias_analyzer: BiasAnalyzer = BiasAnalyzer(gemini_client)
+bias_analyzer2: BiasAnalyzer = BiasAnalyzer(gemini_client2)
+
 web_parser: WebParser = WebParser(settings.parse_max_content_length, settings.parse_chunk_size)
 
 
@@ -58,6 +67,7 @@ app: FastAPI = FastAPI()
 
 result_cache: TTLCache = TTLCache(maxsize=settings.cache_size, ttl=settings.cache_ttl)
 enhanced_result_cache: TTLCache = TTLCache(maxsize=settings.cache_size, ttl=settings.cache_ttl)
+pro_version_analysis: TTLCache = TTLCache(maxsize=settings.cache_size, ttl=settings.cache_ttl)
 
 @app.post('/analyze')
 def analyze(analyze_request: AnalyzeRequest) -> AnalyzeResponse:
@@ -76,7 +86,7 @@ def analyze(analyze_request: AnalyzeRequest) -> AnalyzeResponse:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail='Could not parse page')
 
     try:
-        result = bias_analyzer.analyze(text)
+        result = bias_analyzer2.analyze(text)
         response = AnalyzeResponse(uri=analyze_request.uri, result=result)
         result_cache[analyze_request.uri] = response
         return response
@@ -110,10 +120,34 @@ def enhance(analyze_response: AnalyzeResponse) -> str:
     try:
         # logger.info(text)
         # logger.info(analyze_response.result)
-        result = bias_analyzer.enhance(text,analyze_response.result)
+        result = bias_analyzer2.enhance(text,analyze_response.result)
         enhanced_result_cache[analyze_response.uri] = result
         return result
     
     except Exception as e:
         logger.exception("Failed to analyze %s: %s", analyze_response.uri, str(e))
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail='Could not analyze page')
+
+@app.post('/analyzeEnhancedUsingModel2')
+def analyze(text: str) -> AnalyzeResult:
+    # try to use cached result
+    stored_output = pro_version_analysis.get(text)
+
+    if stored_output:
+        logger.info('Returning cached result for the Query')
+        return stored_output
+
+
+    logger.info('Analyzing the Enhanced text version using a Pro Model')
+
+    if not text:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail='Please enter text to analyze')
+
+    try:
+        result = bias_analyzer.analyze(text)
+        pro_version_analysis[text] = result
+        return result
+    
+    except Exception as e:
+        logger.exception("Failed to analyze.... %s", str(e))
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail='Could not analyze page')
