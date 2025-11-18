@@ -419,3 +419,22 @@ sentiment_score
 2025-11-18 17:58:26,599:backend.main:Returning cached result for https://www.classicshorts.com/stories/magi.html
 2025-11-18 17:58:26,603:backend.main:Returning enhanced_cached result for https://www.classicshorts.com/stories/magi.html
 2025-11-18 17:59:38,735:backend.main:Returning cached result for https://www.classicshorts.com/stories/magi.html
+2025-11-18 18:01:59,885:backend.main:Analyzing https://www.classicshorts.com/stories/magi.html
+2025-11-18 18:02:09,450:backend.main:Returning cached result for https://www.classicshorts.com/stories/magi.html
+2025-11-18 18:02:18,366:backend.main:Returning cached result for https://www.classicshorts.com/stories/magi.html
+2025-11-18 18:02:18,370:backend.main:Returning enhanced_cached result for https://www.classicshorts.com/stories/magi.html
+2025-11-18 18:29:40,144:backend.main:Returning cached result for https://www.classicshorts.com/stories/magi.html
+2025-11-18 18:32:21,677:backend.main:Analyzing https://www.classicshorts.com/stories/magi.html
+2025-11-18 18:33:04,360:backend.main:Analyzing https://www.classicshorts.com/stories/magi.html
+2025-11-18 18:33:36,684:backend.main:Failed to extract text from https://www.classicshorts.com/stories/magi.html
+2025-11-18 18:34:19,366:backend.main:Failed to extract text from https://www.classicshorts.com/stories/magi.html
+2025-11-18 18:59:32,361:backend.main:Analyzing https://en.wikisource.org/wiki/My_Life_and_other_Stories/The_Lady_with_the_Toy_Dog
+2025-11-18 19:00:47,385:backend.main:Failed to extract text from https://en.wikisource.org/wiki/My_Life_and_other_Stories/The_Lady_with_the_Toy_Dog
+2025-11-18 19:03:05,438:backend.main:Analyzing https://en.wikisource.org/wiki/My_Life_and_other_Stories/The_Lady_with_the_Toy_Dog
+2025-11-18 19:04:20,445:backend.main:Failed to extract text from https://en.wikisource.org/wiki/My_Life_and_other_Stories/The_Lady_with_the_Toy_Dog
+2025-11-18 20:06:46,826:backend.main:Analyzing https://en.wikisource.org/wiki/My_Life_and_other_Stories/The_Lady_with_the_Toy_Dog
+2025-11-18 20:06:47,197:backend.main:Failed to extract text from https://en.wikisource.org/wiki/My_Life_and_other_Stories/The_Lady_with_the_Toy_Dog
+2025-11-18 20:20:34,752:backend.main:Analyzing https://en.wikisource.org/wiki/My_Life_and_other_Stories/The_Lady_with_the_Toy_Dog
+2025-11-18 20:20:55,775:backend.main:Analyzing https://en.wikisource.org/wiki/My_Life_and_other_Stories/The_Lady_with_the_Toy_Dog
+2025-11-18 20:22:01,590:backend.main:Returning cached result for https://en.wikisource.org/wiki/My_Life_and_other_Stories/The_Lady_with_the_Toy_Dog
+2025-11-18 20:22:01,595:backend.main:Enhancing https://en.wikisource.org/wiki/My_Life_and_other_Stories/The_Lady_with_the_Toy_Dog

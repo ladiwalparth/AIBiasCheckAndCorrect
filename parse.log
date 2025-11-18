@@ -25,3 +25,17 @@
 2025-11-18 17:52:37,957:backend.parse:Using requests to scrape https://www.classicshorts.com/stories/magi.html
 2025-11-18 17:53:16,269:backend.parse:Using requests to scrape https://www.classicshorts.com/stories/magi.html
 2025-11-18 17:58:12,475:backend.parse:Using requests to scrape https://www.classicshorts.com/stories/magi.html
+2025-11-18 18:01:59,885:backend.parse:Using requests to scrape https://www.classicshorts.com/stories/magi.html
+2025-11-18 18:32:21,677:backend.parse:Using requests to scrape https://www.classicshorts.com/stories/magi.html
+2025-11-18 18:33:04,360:backend.parse:Using requests to scrape https://www.classicshorts.com/stories/magi.html
+2025-11-18 18:33:36,683:backend.parse:Error parsing URI https://www.classicshorts.com/stories/magi.html: HTTPSConnectionPool(host='www.classicshorts.com', port=443): Max retries exceeded with url: /stories/magi.html (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x12b9f74d0>, 'Connection to www.classicshorts.com timed out. (connect timeout=None)'))
+2025-11-18 18:34:19,366:backend.parse:Error parsing URI https://www.classicshorts.com/stories/magi.html: HTTPSConnectionPool(host='www.classicshorts.com', port=443): Max retries exceeded with url: /stories/magi.html (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x12b9f6350>, 'Connection to www.classicshorts.com timed out. (connect timeout=None)'))
+2025-11-18 18:59:32,362:backend.parse:Using requests to scrape https://en.wikisource.org/wiki/My_Life_and_other_Stories/The_Lady_with_the_Toy_Dog
+2025-11-18 19:00:47,383:backend.parse:Error parsing URI https://en.wikisource.org/wiki/My_Life_and_other_Stories/The_Lady_with_the_Toy_Dog: HTTPSConnectionPool(host='en.wikisource.org', port=443): Max retries exceeded with url: /wiki/My_Life_and_other_Stories/The_Lady_with_the_Toy_Dog (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x10eb897f0>, 'Connection to en.wikisource.org timed out. (connect timeout=None)'))
+2025-11-18 19:03:05,439:backend.parse:Using requests to scrape https://en.wikisource.org/wiki/My_Life_and_other_Stories/The_Lady_with_the_Toy_Dog
+2025-11-18 19:04:20,445:backend.parse:Error parsing URI https://en.wikisource.org/wiki/My_Life_and_other_Stories/The_Lady_with_the_Toy_Dog: HTTPSConnectionPool(host='en.wikisource.org', port=443): Max retries exceeded with url: /wiki/My_Life_and_other_Stories/The_Lady_with_the_Toy_Dog (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x10eb7bd90>, 'Connection to en.wikisource.org timed out. (connect timeout=None)'))
+2025-11-18 20:06:46,828:backend.parse:Using requests to scrape https://en.wikisource.org/wiki/My_Life_and_other_Stories/The_Lady_with_the_Toy_Dog
+2025-11-18 20:06:47,197:backend.parse:Error parsing URI https://en.wikisource.org/wiki/My_Life_and_other_Stories/The_Lady_with_the_Toy_Dog: 403 Client Error: Forbidden for url: https://en.wikisource.org/wiki/My_Life_and_other_Stories/The_Lady_with_the_Toy_Dog
+2025-11-18 20:20:34,752:backend.parse:Using Selenium to scrape https://en.wikisource.org/wiki/My_Life_and_other_Stories/The_Lady_with_the_Toy_Dog
+2025-11-18 20:20:55,776:backend.parse:Using Selenium to scrape https://en.wikisource.org/wiki/My_Life_and_other_Stories/The_Lady_with_the_Toy_Dog
+2025-11-18 20:22:01,595:backend.parse:Using Selenium to scrape https://en.wikisource.org/wiki/My_Life_and_other_Stories/The_Lady_with_the_Toy_Dog
