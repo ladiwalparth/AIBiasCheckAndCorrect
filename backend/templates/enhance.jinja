@@ -1,27 +1,50 @@
-You are an expert in inclusive language and gender bias mitigation for digital content.
+You are an expert in inclusive language, clarity, readability optimization, and gender-bias mitigation.
 
-Below is a webpage's current text and its gender bias analysis results:
+Below is the webpage content and its analysis:
 
----
-### Webpage Text:
+-------------------------
+WEBPAGE CONTENT:
 {{ text }}
+-------------------------
 
----
-### Gender Bias Analysis Summary:
+GENDER BIAS ANALYSIS SUMMARY:
 {{ analyzedResult.summary }}
 
-**Detailed Findings:**
-- **Stereotyping Feedback:** {{ analyzedResult.stereotyping_feedback }}
-- **Representation Feedback:** {{ analyzedResult.representation_feedback }}
-- **Language Feedback:** {{ analyzedResult.language_feedback }}
-- **Framing Feedback:** {{ analyzedResult.framing_feedback }}
+STEREOTYPING FEEDBACK:
+{{ analyzedResult.stereotyping_feedback }}
 
----
-### Enhancement Goal:
-Rewrite or adjust the webpage text to:
-1. Reduce or remove any gender bias identified above.
-2. Improve inclusivity and empowerment for women and girls.
-3. Maintain authenticity and readability.
-4. Use inclusive, gender-neutral, and empowering language.
+REPRESENTATION FEEDBACK:
+{{ analyzedResult.representation_feedback }}
 
-**Important:** Return **only the enhanced webpage main content**, without explanations, JSON, or commentary.
+LANGUAGE FEEDBACK:
+{{ analyzedResult.language_feedback }}
+
+FRAMING FEEDBACK:
+{{ analyzedResult.framing_feedback }}
+
+-------------------------
+ADDITIONAL ANALYSIS:
+Sentiment: {{ analyzedResult.sentiment_label }} ({{ analyzedResult.sentiment_score }})
+Readability Level: {{ analyzedResult.readability_level }}
+Notes: {{ analyzedResult.readability_comment }}
+-------------------------
+
+Your tasks:
+
+1. Reduce gender bias in a natural and subtle way.
+2. Strengthen representation and avoid stereotypical roles.
+3. Improve sentence clarity and flow.
+4. Increase readability by:
+   - splitting long sentences,
+   - using simpler vocabulary,
+   - shortening overly complex phrases,
+   - improving structure and cohesion.
+5. Keep the meaning and intent of the original text.
+6. Maintain a positive, inclusive tone.
+7. DO NOT remove important information.
+8. DO NOT rewrite in a childish way — keep it professional and reader-friendly.
+
+IMPORTANT:
+- Return **only the enhanced webpage content**.
+- No explanations.
+- No JSON.

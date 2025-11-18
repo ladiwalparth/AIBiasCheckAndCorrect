@@ -361,3 +361,43 @@ jinja2.exceptions.TemplateNotFound: 'analyze.jinja' not found in search path: 't
 2025-10-23 13:39:09,999:backend.main:Analyzing https://americanliterature.com/author/anonymous/short-story/the-little-thief-in-the-pantry
 2025-10-23 13:40:30,937:backend.main:Enhancing https://americanliterature.com/author/anonymous/short-story/the-little-thief-in-the-pantry
 2025-10-23 13:41:54,164:backend.main:Analyzing the Enhanced text version using a Pro Model
+2025-11-03 13:11:53,922:backend.main:Analyzing https://americanliterature.com/author/anonymous/short-story/the-little-thief-in-the-pantry
+2025-11-03 13:13:38,665:backend.main:Analyzing https://americanliterature.com/author/anonymous/short-story/the-little-thief-in-the-pantry
+2025-11-03 13:16:58,804:backend.main:Analyzing https://www.libraryofshortstories.com/onlinereader/the-1000000-bank-note
+2025-11-03 13:20:44,287:backend.main:Analyzing https://www.libraryofshortstories.com/onlinereader/the-1000000-bank-note
+2025-11-03 13:24:38,586:backend.main:Analyzing https://www.nicestories.com/my/story.php?id=11380
+2025-11-03 14:19:47,161:backend.main:Analyzing https://monkeypen.com/blogs/news/do-you-wonder-about-rain-snow-sleet-and-hail-free-childrens-book
+2025-11-03 14:23:45,058:backend.main:Analyzing https://monkeypen.com/blogs/news/do-you-wonder-about-rain-snow-sleet-and-hail-free-childrens-book
+2025-11-03 14:26:27,240:backend.main:Enhancing https://monkeypen.com/blogs/news/do-you-wonder-about-rain-snow-sleet-and-hail-free-childrens-book
+2025-11-03 14:29:07,517:backend.main:Analyzing the Enhanced text version using a Pro Model
+2025-11-03 15:17:11,885:backend.main:Analyzing https://www.freechildrenstories.com/jerrys-boxg
+2025-11-03 15:18:08,668:backend.main:Analyzing https://www.freechildrenstories.com/jerrys-box
+2025-11-03 15:45:36,307:backend.main:Analyzing https://monkeypen.com/blogs/news/do-you-wonder-about-rain-snow-sleet-and-hail-free-childrens-book
+2025-11-18 12:48:57,704:backend.main:Analyzing https://www.classicshorts.com/stories/magi.html
+2025-11-18 12:50:46,048:backend.main:Analyzing https://www.classicshorts.com/stories/magi.html
+2025-11-18 12:51:54,065:backend.main:Enhancing https://www.classicshorts.com/stories/magi.html
+2025-11-18 12:53:25,007:backend.main:Analyzing the Enhanced text version using a Pro Model
+2025-11-18 12:53:35,538:backend.main:Failed to analyze.... 1 validation error for AnalyzeResult
+sentiment_score
+  Input should be a valid integer, got a number with a fractional part [type=int_from_float, input_value=0.7, input_type=float]
+    For further information visit https://errors.pydantic.dev/2.12/v/int_from_float
+Traceback (most recent call last):
+  File "/Users/barkhachaudhary/Desktop/BTP/AIH/backend/main.py", line 170, in analyze
+    result = bias_analyzer.analyze(text)
+  File "/Users/barkhachaudhary/Desktop/BTP/AIH/backend/bias.py", line 122, in analyze
+    analyze_result = AnalyzeResult.model_validate(from_json(chat_response))
+  File "/Users/barkhachaudhary/Desktop/BTP/AIH/venv/lib/python3.13/site-packages/pydantic/main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        obj,
+        ^^^^
+    ...<5 lines>...
+        by_name=by_name,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for AnalyzeResult
+sentiment_score
+  Input should be a valid integer, got a number with a fractional part [type=int_from_float, input_value=0.7, input_type=float]
+    For further information visit https://errors.pydantic.dev/2.12/v/int_from_float
+2025-11-18 12:57:24,152:backend.main:Analyzing the Enhanced text version using a Pro Model

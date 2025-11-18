@@ -60,7 +60,7 @@ gemini_client2: GeminiClient = GeminiClient(
 bias_analyzer: BiasAnalyzer = BiasAnalyzer(gemini_client)
 bias_analyzer2: BiasAnalyzer = BiasAnalyzer(gemini_client2)
 
-web_parser: WebParser = WebParser(settings.parse_max_content_length, settings.parse_chunk_size)
+web_parser: WebParser = WebParser(settings.parse_max_content_length, settings.parse_chunk_size, use_selenium=False)
 
 
 app: FastAPI = FastAPI()
@@ -74,9 +74,22 @@ def analyze(analyze_request: AnalyzeRequest) -> AnalyzeResponse:
     # try to use cached result
     cached_result = result_cache.get(analyze_request.uri)
 
+    # --- FIX OLD CACHE ITEMS THAT DO NOT HAVE NEW FIELDS ---
+    if cached_result:
+        result = cached_result.result
+        if (
+            not hasattr(result, "sentiment_score")
+            or not hasattr(result, "readability_score")
+            or not hasattr(result, "readability_level")
+        ):
+            logger.info("Old cached item detected — ignoring cache for %s", analyze_request.uri)
+            cached_result = None
+
+    # If still valid, return cached result
     if cached_result:
         logger.info('Returning cached result for %s', analyze_request.uri)
         return cached_result
+
 
 
     logger.info('Analyzing %s', analyze_request.uri)
@@ -97,8 +110,18 @@ def analyze(analyze_request: AnalyzeRequest) -> AnalyzeResponse:
 
 @app.post('/ParsedText')
 def scrape(analyze_request: AnalyzeRequest) -> str:
-    logger.info('Analyzing %s', analyze_request.uri)
+    logger.info(f"Analyzing {analyze_request.uri}")
+
+    # If user wants to use selenium, override the flag
+    web_parser.use_selenium = analyze_request.use_selenium
+
+    # Call the updated parse() method
     text = web_parser.parse(analyze_request.uri)
+
+    if not text:
+        logger.warning(f"Failed to extract text from {analyze_request.uri}")
+        return "No text could be extracted from the given URL."
+
     return text
 
 @app.post('/EnhancedText')

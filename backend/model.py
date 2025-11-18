@@ -6,6 +6,7 @@ from pydantic import BaseModel
 
 class AnalyzeRequest(BaseModel):
     uri: str
+    use_selenium: bool = False
 
 class AnalyzeResult(BaseModel):
     summary: str
@@ -26,6 +27,17 @@ class AnalyzeResult(BaseModel):
     improvement_suggestions: str
     male_to_female_mention_ratio: float
     gender_neutral_language_percentage: float
+
+    # --- NEW FIELDS ---
+    # Sentiment analysis (0-100) and label
+    sentiment_score: Optional[float] = None                 # 0..100
+    sentiment_label: Optional[str] = None                 # "Positive" / "Neutral" / "Negative"
+
+    # Readability metrics
+    readability_score: Optional[float] = None             # Flesch Reading Ease (0..100 approx)
+    readability_level: Optional[str] = None               # "Easy" / "Medium" / "Hard"
+    readability_comment: Optional[str] = None
+
 
 class AnalyzeResponse(BaseModel):
     uri: str
