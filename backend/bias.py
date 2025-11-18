@@ -145,3 +145,4 @@ class BiasAnalyzer:
         chat: ChatSession = self.gemini_client.start_chat()
         chat_response: str = self.gemini_client.get_chat_response(chat, prompt)
         return chat_response
+    

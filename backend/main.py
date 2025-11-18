@@ -13,9 +13,21 @@ from .parse import WebParser
 import logging
 from functools import lru_cache
 
-from fastapi import HTTPException, status
 
+from fastapi import Body, HTTPException, status
 from .model import AnalyzeRequest, AnalyzeResponse, AnalyzeResult
+
+from fastapi.middleware.cors import CORSMiddleware
+
+app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],          # allow all frontend URLs
+    allow_credentials=True,
+    allow_methods=["*"],          # this is MOST important for OPTIONS
+    allow_headers=["*"],
+)
 
 
 #setting up logging
@@ -63,7 +75,7 @@ bias_analyzer2: BiasAnalyzer = BiasAnalyzer(gemini_client2)
 web_parser: WebParser = WebParser(settings.parse_max_content_length, settings.parse_chunk_size, use_selenium=False)
 
 
-app: FastAPI = FastAPI()
+
 
 result_cache: TTLCache = TTLCache(maxsize=settings.cache_size, ttl=settings.cache_ttl)
 enhanced_result_cache: TTLCache = TTLCache(maxsize=settings.cache_size, ttl=settings.cache_ttl)
@@ -151,26 +163,72 @@ def enhance(analyze_response: AnalyzeResponse) -> str:
         logger.exception("Failed to analyze %s: %s", analyze_response.uri, str(e))
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail='Could not analyze page')
 
-@app.post('/analyzeEnhancedUsingModel2')
-def analyze(text: str) -> AnalyzeResult:
-    # try to use cached result
-    stored_output = pro_version_analysis.get(text)
+# @app.post('/analyzeEnhancedUsingModel2')
+# def analyze(text: str) -> AnalyzeResult:
+#     # try to use cached result
+#     stored_output = pro_version_analysis.get(text)
 
-    if stored_output:
-        logger.info('Returning cached result for the Query')
-        return stored_output
+#     if stored_output:
+#         logger.info('Returning cached result for the Query')
+#         return stored_output
 
 
-    logger.info('Analyzing the Enhanced text version using a Pro Model')
+#     logger.info('Analyzing the Enhanced text version using a Pro Model')
+
+#     if not text:
+#         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail='Please enter text to analyze')
+
+#     try:
+#         result = bias_analyzer.analyze(text)
+#         pro_version_analysis[text] = result
+#         return result
+    
+#     except Exception as e:
+#         logger.exception("Failed to analyze.... %s", str(e))
+#         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail='Could not analyze page')
+    
+    
+
+# @app.post('/analyzeEnhancedUsingModel2')
+# def analyze_enhanced_using_model2(payload: dict = Body(...)):
+#     # payload should be {"text": "<the enhanced text>"}
+#     text = None
+#     if isinstance(payload, dict):
+#         text = payload.get("text") or payload.get("enhanced_text") or payload.get("uri")
+#     # if client accidentally sent a raw string (rare), try to use it:
+#     if text is None and isinstance(payload, str):
+#         text = payload
+
+#     if not text:
+#         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Please provide 'text' in JSON body")
+
+#     try:
+#         result = bias_analyzer.analyze(text)
+#         pro_version_analysis[text] = result
+#         return result
+#     except Exception as e:
+#         logger.exception("Failed to analyze.... %s", str(e))
+#         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail='Could not analyze text')
+
+@app.post("/analyzeEnhancedUsingModel2")
+def analyze_enhanced_using_model2(payload: dict = Body(...)):
+    """
+    Expects JSON like:
+    {
+        "text": "the enhanced text to analyze"
+    }
+    """
+    text = payload.get("text")
 
     if not text:
-        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail='Please enter text to analyze')
+        raise HTTPException(status_code=400, detail="JSON body must include 'text' field")
 
     try:
         result = bias_analyzer.analyze(text)
         pro_version_analysis[text] = result
         return result
-    
     except Exception as e:
-        logger.exception("Failed to analyze.... %s", str(e))
-        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail='Could not analyze page')
+        logger.exception("Failed to analyze enhanced text: %s", str(e))
+        raise HTTPException(status_code=500, detail="Could not analyze enhanced text")
+
+

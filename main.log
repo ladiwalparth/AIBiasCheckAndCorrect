@@ -401,3 +401,21 @@ sentiment_score
   Input should be a valid integer, got a number with a fractional part [type=int_from_float, input_value=0.7, input_type=float]
     For further information visit https://errors.pydantic.dev/2.12/v/int_from_float
 2025-11-18 12:57:24,152:backend.main:Analyzing the Enhanced text version using a Pro Model
+2025-11-18 14:18:34,935:backend.main:Analyzing https://www.classicshorts.com/stories/magi.html
+2025-11-18 14:31:51,346:backend.main:Analyzing https://www.classicshorts.com/stories/magi.html
+2025-11-18 14:34:21,794:backend.main:Analyzing https://www.classicshorts.com/stories/magi.html
+2025-11-18 14:51:07,309:backend.main:Analyzing https://www.classicshorts.com/stories/magi.html
+2025-11-18 14:51:25,468:backend.main:Analyzing https://www.classicshorts.com/stories/magi.html
+2025-11-18 14:52:26,431:backend.main:Returning cached result for https://www.classicshorts.com/stories/magi.html
+2025-11-18 14:52:26,437:backend.main:Enhancing https://www.classicshorts.com/stories/magi.html
+2025-11-18 15:01:49,284:backend.main:Analyzing https://www.classicshorts.com/stories/magi.html
+2025-11-18 15:01:57,021:backend.main:Analyzing https://www.classicshorts.com/stories/magi.html
+2025-11-18 15:03:18,468:backend.main:Returning cached result for https://www.classicshorts.com/stories/magi.html
+2025-11-18 15:03:18,473:backend.main:Enhancing https://www.classicshorts.com/stories/magi.html
+2025-11-18 17:52:37,956:backend.main:Analyzing https://www.classicshorts.com/stories/magi.html
+2025-11-18 17:53:16,269:backend.main:Enhancing https://www.classicshorts.com/stories/magi.html
+2025-11-18 17:58:12,473:backend.main:Analyzing https://www.classicshorts.com/stories/magi.html
+2025-11-18 17:58:19,082:backend.main:Returning cached result for https://www.classicshorts.com/stories/magi.html
+2025-11-18 17:58:26,599:backend.main:Returning cached result for https://www.classicshorts.com/stories/magi.html
+2025-11-18 17:58:26,603:backend.main:Returning enhanced_cached result for https://www.classicshorts.com/stories/magi.html
+2025-11-18 17:59:38,735:backend.main:Returning cached result for https://www.classicshorts.com/stories/magi.html
